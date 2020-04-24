@@ -40,15 +40,11 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		
 		if(operation.equals("/TrafficManagement/")) {
 			
-			List<Ship> ships = dao.list();
-			
-			//request.setAttribute("ships", ships);
 			request.setAttribute("request", operation);
-			request.getRequestDispatcher("ships.jsp").forward(request,  response);
+			request.getRequestDispatcher("menu.jsp").forward(request,  response);
 		
 		} else if(operation.equals("/TrafficManagement/trafficMonitor")){
-			//I know this works now, but now I gotta figureout how to get the jsondata to this to use on a repeated time
-			//Also, copy this stuff and use it in the portcall project
+			
 			request.setAttribute("request", operation);
 			request.getRequestDispatcher("trafficMonitor.jsp").forward(request,  response);
 		}

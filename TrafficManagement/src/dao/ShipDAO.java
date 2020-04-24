@@ -47,24 +47,5 @@ public class ShipDAO {
 		return result;
 	}
 			
-	public List<Ship> list(){
-		return withDB( new RunJDBC<List<Ship>>() {
-			public List<Ship> run (Connection con) throws Exception {
-				List<Ship> list = new ArrayList<Ship>();
-				Statement stt = con.createStatement();
-				final String req = "select * from VESSEL ORDER BY RAND() LIMIT 3;";
-				ResultSet rs = stt.executeQuery(req);
-				while (rs.next()) {
-					Ship ship = new Ship();
-					ship.setImo(rs.getInt("IMO"));
-					ship.setTonnage(rs.getInt("Tonnage"));
-					ship.setName(rs.getString("Name"));
-					ship.setFlag(rs.getString("Flag"));
-					list.add( ship );
-				}
-				
-				return list;
-			}
-		});
-	}
+	
 }

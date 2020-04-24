@@ -17,6 +17,8 @@ var myIcon = L.icon({
 });
 
 //Function for Testing
+var newJson = '[{"Class": "Class A", "ICES_Rect": 4421, "MMSI": 219385000, "PositionReport": {"CoG": 238.4, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [12.59103, 55.677165], "type": "Point"}, "SoG": 0.1}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1536537600000"}}}, {"Class": "Class A", "ICES_Rect": 4421, "MMSI": 240350000, "PositionReport": {"CoG": 219.1, "Heading": 219, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [12.939, 55.648667], "type": "Point"}, "RoT": 0.0, "SoG": 10.4}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1536537601000"}}}, {"Class": "Class A", "ICES_Rect": 4421, "MMSI": 219020325, "PositionReport": {"CoG": 193.4, "Heading": 189, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [12.689278, 55.51166], "type": "Point"}, "RoT": 0.0, "SoG": 8.2}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1536537601000"}}}, {"Class": "Class A", "ICES_Rect": 4488, "MMSI": 219018811, "PositionReport": {"CoG": 130.8, "Heading": 131, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [13.005885, 55.644205], "type": "Point"}, "SoG": 6.4}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1536537603000"}}}]';
+
 function getJsonCollection() {
     let json = '[{"Class": "Class A", "ETA": {"$date": {"$numberLong": "1537412400000"}}, "ICES_Rect": 4488, "MMSI": 231261000, "PositionReport": {"CoG": 353.0, "Heading": 294, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [13.002288, 55.613685], "type": "Point"}, "RoT": 0.0, "SoG": 0.0}, "StaticData": {"A": 10, "B": 18, "Breadth": 10, "C": 5, "CallSign": "OZ2174", "D": 5, "DataSourceType": "AIS", "Destination": "SOUND AREA", "IMO": 9157997, "Length": 28, "Name": "VEN", "PositionFixingDevice": "GPS", "VesselType": "Tug"}, "Timestamp": {"$date": {"$numberLong": "1538351989000"}}}, {"Class": "Class A", "ICES_Rect": 4421, "MMSI": 306885000, "PositionReport": {"CoG": 171.5, "Heading": 175, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [12.70463, 55.805007], "type": "Point"}, "RoT": 0.0, "SoG": 9.6}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1538265600000"}}}, {"Class": "Class A", "ICES_Rect": 4421, "MMSI": 212503000, "PositionReport": {"CoG": 4.6, "Heading": 9, "NavigationalStatus": "Under way using engine", "Position": {"coordinates": [12.686973, 55.705525], "type": "Point"}, "RoT": 0.0, "SoG": 8.7}, "StaticData": {"DataSourceType": "AIS", "PositionFixingDevice": "Undefined", "VesselType": "Undefined"}, "Timestamp": {"$date": {"$numberLong": "1538265600000"}}}, {"Class": "Class A", "ETA": {"$date": {"$numberLong": "1538236800000"}}, "ICES_Rect": 4488, "MMSI": 354527000, "PositionReport": {"CoG": 18.4, "Heading": 351, "NavigationalStatus": "Moored", "Position": {"coordinates": [13.014508, 55.636252], "type": "Point"}, "RoT": 0.0, "SoG": 0.1}, "StaticData": {"A": 153, "B": 26, "Breadth": 28, "C": 18, "CallSign": "3EVP5", "D": 10, "DataSourceType": "AIS", "Destination": "MALMO", "IMO": 9655420, "Length": 179, "Name": "AFRICAN TEIST", "PositionFixingDevice": "GPS", "VesselType": "Cargo"}, "Timestamp": {"$date": {"$numberLong": "1538309285000"}}}, {"Class": "Class A", "ETA": {"$date": {"$numberLong": "1537719300000"}}, "ICES_Rect": 4421, "MMSI": 319030600, "PositionReport": {"CoG": 49.6, "Heading": 204, "NavigationalStatus": "Moored", "Position": {"coordinates": [12.595993, 55.683703], "type": "Point"}, "RoT": 0.0, "SoG": 0.0}, "StaticData": {"A": 28, "B": 8, "Breadth": 8, "C": 6, "CallSign": "ZCOV7", "D": 2, "DataSourceType": "AIS", "Destination": "COPENHAGEN", "IMO": 1008451, "Length": 36, "Name": "ARCADIA", "PositionFixingDevice": "Undefined", "VesselType": "Pleasure"}, "Timestamp": {"$date": {"$numberLong": "1538321819000"}}}]';
 
@@ -66,7 +68,12 @@ function clearMarkers() {
     mymap.createPane("markerPane");
 }
 
-//Calling of shit to test
-AddingShipToView(getJsonCollection());
+function updateView(json) {
+	//This is takes the new json data and updates the map with it
+	clearMarkers();
+	AddingShipToView(json);
+}
 
-//document.body.addEventListener("click", clearMarkers);
+
+
+
