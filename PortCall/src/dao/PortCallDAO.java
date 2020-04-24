@@ -15,7 +15,7 @@ import beans.PrearrivalForm;
 
 @ApplicationScoped @JDBC
 public class PortCallDAO {
-	@Resource( lookup="jdbc/myShips")
+	@Resource( lookup="jdbc/myShips") //We'll have to change this
 	private DataSource dataSource;
 	private List<PrearrivalForm> arrivalForms;
 	
@@ -70,6 +70,14 @@ public class PortCallDAO {
 	}
 	
 	public void addFormToList(PrearrivalForm form) {
-		arrivalForms.add(form);
+		this.arrivalForms.add(form);
+	}
+	
+	public String getLastShipName() {
+		
+		PrearrivalForm form = this.arrivalForms.get(this.arrivalForms.size() - 1);
+		String name = form.getName();
+		
+		return name;
 	}
 }
