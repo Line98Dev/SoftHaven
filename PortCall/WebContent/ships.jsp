@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Random Ships</title>
+<title>Pre-Arrival Form</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/ships.css"/>
 
 </head>

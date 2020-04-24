@@ -20,7 +20,8 @@ import dao.*;
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
-    
+    public PrearrivalForm submittedForm;
+	
 	@Inject @JDBC
 	PortCallDAO dao;
 	
@@ -40,11 +41,16 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		
 		if(operation.equals("/PortCall/")) {
 			
-			List<PrearrivalForm> ships = dao.list();
-			
-			request.setAttribute("request", operation);
+			FormSubmit(request, response);
 			request.getRequestDispatcher("ships.jsp").forward(request,  response);
 		
+		} else if(operation.equals("/PortCall/submitForm")) {
+			
+			//Causes 500 server error nullPointer, and unsure why
+			//request.setAttribute("ship", submittedForm.getName());
+			
+			request.setAttribute("request", operation);
+			request.getRequestDispatcher("sentForm.jsp").forward(request,  response);
 		}
 	}
 	
@@ -69,8 +75,7 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			int departurePassengers  = new Integer( request.getParameter("PassengerDepartureNumber")).intValue();
 			
 			PrearrivalForm form = new PrearrivalForm(name, callSign, imo, agentInfo, arrivingFrom, eta, berth, nextPort, etd, dischargeCargoDesc, dischargeCargoAmount, loadCargoDesc, loadCargoAmount, arrivalPassengers, departurePassengers, 0);
-			
-			
+			submittedForm = form;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
