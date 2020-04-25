@@ -1,4 +1,4 @@
-package dao;
+package main.java.dao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,14 +10,15 @@ import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.sql.DataSource;
 
-import beans.PrearrivalForm;
+import main.java.beans.PrearrivalForm;
+import main.java.beans.Ship;
 
 
 @ApplicationScoped @JDBC
 public class PortCallDAO {
 	@Resource( lookup="jdbc/myShips") //We'll have to change this
 	private DataSource dataSource;
-	private List<PrearrivalForm> arrivalForms;
+	private List<PrearrivalForm> arrivalForms = new ArrayList<PrearrivalForm>();
 	
 	static interface RunJDBC <T>{
 		T run(Connection con) throws Exception;
@@ -79,5 +80,15 @@ public class PortCallDAO {
 		String name = form.getName();
 		
 		return name;
+	}
+	
+	public List<Ship> getTestList() {
+		List<Ship> shipList = new ArrayList<Ship>();
+		
+		shipList.add(new Ship("Enterprise", 43126, 101, "at berth"));
+		shipList.add(new Ship("Tugger", 5556, 102, "waiting"));
+		shipList.add(new Ship("Rictus", 1236, 103, "departed"));
+		
+		return shipList;
 	}
 }

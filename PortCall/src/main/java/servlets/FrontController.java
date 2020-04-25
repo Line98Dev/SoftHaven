@@ -1,4 +1,4 @@
-package servlets;
+package main.java.servlets;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,14 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import beans.PrearrivalForm;
-import dao.*;
+import main.java.beans.PrearrivalForm;
+import main.java.dao.*;
 
 
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns= {"/submitForm", "/index.jsp"})
+@WebServlet(urlPatterns= {"/submitForm", "/shipAgent", "/index.jsp"})
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
@@ -86,7 +86,6 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 				int departurePassengers = 0;
 				if(request.getParameter("PassengerDepartureNumber") != null && !request.getParameter("PassengerDepartureNumber").isEmpty()) departurePassengers = Integer.parseInt(request.getParameter("PassengerDepartureNumber"));
 				
-				//For some reason this object is null when it's added to the dao
 				PrearrivalForm form = new PrearrivalForm(name, callSign, imo, agentInfo, arrivingFrom, eta, berth, nextPort, etd, dischargeCargoDesc, dischargeCargoAmount, loadCargoDesc, loadCargoAmount, arrivalPassengers, departurePassengers, 0);
 				
 				dao.addFormToList(form);
@@ -101,11 +100,17 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		
 		} else if(operation.equals("/PortCall/submitForm")) {
 			
-			//Causes 500 server error nullPointer, because of line 90-92
 			request.setAttribute("ship", dao.getLastShipName());
 			
 			request.setAttribute("request", operation);
 			request.getRequestDispatcher("sentForm.jsp").forward(request,  response);
+		
+		} else if(operation.equals("/PortCall/shipAgent")) {
+			
+			request.setAttribute("ships", dao.getTestList());
+			
+			request.getRequestDispatcher("shipAgent.jsp").forward(request,  response);
+		
 		}
 	}
 }
