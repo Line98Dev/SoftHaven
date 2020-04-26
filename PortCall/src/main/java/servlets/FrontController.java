@@ -15,7 +15,7 @@ import main.java.dao.*;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns= {"/submitForm", "/shipMaster", "/shipAgent", "/index.jsp"})
+@WebServlet(urlPatterns= {"/submitForm", "/shipAgentDetails",  "/shipMaster", "/shipAgent", "/index.jsp"})
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
