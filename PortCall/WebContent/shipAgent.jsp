@@ -13,12 +13,13 @@
         <table>
             <c:forEach var="ship" items="${ships}">
 		        <tr>
-                    <td>IMO: <a href="${pageContext.request.contextPath}/shipAgentDetails?IMO=${ship.IMO}">${ship.IMO}</a></td>
+                    <td>IMO: <a href="${pageContext.request.contextPath}/shipAgentDetails?imo=${ship.IMO}">${ship.IMO}</a></td>
                     <td>Name: ${ship.name}</td>
                     <td>Berth: ${ship.berth}</td>
                     <td>State: ${ship.state}</td>
 		        </tr>
             </c:forEach>
         </table>
+        <p>${request}</p>
 	</body>
 </html>
