@@ -25,7 +25,7 @@ public class Ship implements Cloneable {
 	}
 	
 	
-	public void setImo(int imo) {
+	public void setIMO(int imo) {
 		this.imo = imo;
 	}
 	

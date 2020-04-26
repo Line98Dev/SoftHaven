@@ -16,7 +16,7 @@
 			        <td>
 				        Name: <a href="${pageContext.request.contextPath}/">${ship.name}</a>
 			        </td>
-                    <td>IMO: ???</td>
+                    <td>IMO: ${ship.IMO}</td>
                     <td>Berth: ${ship.berth}</td>
                     <td>State: ${ship.state}</td>
 		        </tr>
