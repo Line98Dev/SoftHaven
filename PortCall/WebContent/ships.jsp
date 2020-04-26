@@ -75,7 +75,7 @@
             <input type="file" name="file" id="file" required />
 		</div>
 		<div>
-			<button type="submit" name="submit">Submit</button>
+			<a href="${pageContext.request.contextPath}/">Back</a> or <button type="submit" name="submit">Submit</button>
 		</div>
 	</form>
 </body>

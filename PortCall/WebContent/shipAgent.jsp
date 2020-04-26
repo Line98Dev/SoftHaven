@@ -9,6 +9,7 @@
 	<body>
         <div>
             <h2 id="listHeader">List of Ships</h2>
+            <a href="${pageContext.request.contextPath}/">Back to Home</a>
         </div>
         <table>
             <c:forEach var="ship" items="${ships}">

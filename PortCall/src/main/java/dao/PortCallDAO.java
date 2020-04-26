@@ -1,4 +1,5 @@
 package main.java.dao;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -87,6 +88,22 @@ public class PortCallDAO {
             } else {
                 return null;
             }
+        });
+    }
+    
+    public void setState(final int imo, String state) {
+        System.out.println("in Modify()");
+        withDB((RunJDBC<Ship>) con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "update Ship set State=? where IMO=?");
+            req.setString(1, state);
+            req.setInt(2, imo);
+            int nbLines = req.executeUpdate();
+            System.out.println("in Modify()");
+            if (nbLines != 1) {
+                System.out.println("Exception during modify");
+            }
+            return null;
         });
     }
 	

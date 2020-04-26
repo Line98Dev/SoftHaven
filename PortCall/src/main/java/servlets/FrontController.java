@@ -15,7 +15,7 @@ import main.java.dao.*;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns= {"/submitForm", "/shipAgentDetails",  "/shipMaster", "/shipAgent", "/index.jsp"})
+@WebServlet(urlPatterns= {"/submitForm", "/shipAgentDetails",  "/shipAgentUpdated", "/shipMaster", "/shipAgent", "/index.jsp"})
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
@@ -96,6 +96,16 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			}
 			
 			request.getRequestDispatcher("shipAgentDetails.jsp").forward(request,  response);
+		
+		} else if(operation.equals("/PortCall/shipAgentUpdated")) {
+			
+			String newState = request.getParameter("newState");
+			int imo = Integer.parseInt(request.getParameter("imo"));
+			
+			dao.setState(imo, newState);
+			
+			request.setAttribute("ships", dao.listShips());
+			request.getRequestDispatcher("shipAgent.jsp").forward(request,  response);
 		
 		}
 	}
