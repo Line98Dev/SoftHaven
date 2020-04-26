@@ -16,7 +16,7 @@ import main.java.dao.*;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns= {"/submitForm", "/shipAgent", "/index.jsp"})
+@WebServlet(urlPatterns= {"/submitForm", "/shipMaster", "/shipAgent", "/index.jsp"})
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
@@ -39,6 +39,10 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		String operation = request.getRequestURI();
 		
 		if(operation.equals("/PortCall/")) {
+		
+			request.getRequestDispatcher("home.jsp").forward(request,  response);
+			
+		} else if(operation.equals("/PortCall/shipMaster")) {
 			
 			try {
 				String name = "NaN";
