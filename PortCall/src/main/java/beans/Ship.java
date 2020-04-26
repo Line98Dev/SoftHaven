@@ -14,6 +14,8 @@ public class Ship implements Cloneable {
 		this.state = state;
 	}
 	
+	public Ship() {}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

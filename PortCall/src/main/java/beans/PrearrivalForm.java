@@ -1,4 +1,4 @@
-package beans;
+package main.java.beans;
 
 public class PrearrivalForm implements Cloneable {
 	

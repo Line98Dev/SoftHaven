@@ -107,7 +107,7 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		
 		} else if(operation.equals("/PortCall/shipAgent")) {
 			
-			request.setAttribute("ships", dao.getTestList());
+			request.setAttribute("ships", dao.listShips());
 			
 			request.getRequestDispatcher("shipAgent.jsp").forward(request,  response);
 		

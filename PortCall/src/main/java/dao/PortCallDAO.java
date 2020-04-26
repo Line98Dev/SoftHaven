@@ -16,7 +16,7 @@ import main.java.beans.Ship;
 
 @ApplicationScoped @JDBC
 public class PortCallDAO {
-	@Resource( lookup="jdbc/myShips") //We'll have to change this
+	@Resource( lookup="jdbc/DenmarkTraffic") //We'll have to change this
 	private DataSource dataSource;
 	private List<PrearrivalForm> arrivalForms = new ArrayList<PrearrivalForm>();
 	
@@ -49,19 +49,19 @@ public class PortCallDAO {
 		return result;
 	}
 			
-	public List<PrearrivalForm> list(){
-		return withDB( new RunJDBC<List<PrearrivalForm>>() {
-			public List<PrearrivalForm> run (Connection con) throws Exception {
-				List<PrearrivalForm> list = new ArrayList<PrearrivalForm>();
+	public List<Ship> listShips(){
+		return withDB( new RunJDBC<List<Ship>>() {
+			public List<Ship> run (Connection con) throws Exception {
+				List<Ship> list = new ArrayList<Ship>();
 				Statement stt = con.createStatement();
-				final String req = "select * from VESSEL ORDER BY RAND() LIMIT 3;";
+				final String req = "select * from Ship ORDER BY RAND() LIMIT 3;";
 				ResultSet rs = stt.executeQuery(req);
 				while (rs.next()) {
-					PrearrivalForm ship = new PrearrivalForm();
-					//ship.setImo(rs.getInt("IMO"));
-					//ship.setTonnage(rs.getInt("Tonnage"));
-					//ship.setName(rs.getString("Name"));
-					//ship.setFlag(rs.getString("Flag"));
+					Ship ship = new Ship();
+					ship.setImo(rs.getInt("IMO"));
+					ship.setBerth(rs.getInt("Berth"));
+					ship.setName(rs.getString("Name"));
+					ship.setState(rs.getString("State"));
 					list.add( ship );
 				}
 				
