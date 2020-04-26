@@ -1,5 +1,6 @@
 package main.java.dao;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,7 +10,6 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
 import javax.sql.DataSource;
-
 import main.java.beans.PrearrivalForm;
 import main.java.beans.Ship;
 
@@ -58,7 +58,7 @@ public class PortCallDAO {
 				ResultSet rs = stt.executeQuery(req);
 				while (rs.next()) {
 					Ship ship = new Ship();
-					ship.setImo(rs.getInt("IMO"));
+					ship.setIMO(rs.getInt("IMO"));
 					ship.setBerth(rs.getInt("Berth"));
 					ship.setName(rs.getString("Name"));
 					ship.setState(rs.getString("State"));
@@ -70,16 +70,28 @@ public class PortCallDAO {
 		});
 	}
 	
+    public Ship findShip(final int imo) {
+        return withDB(con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "select * from Ship where IMO = ?");
+            req.setInt(1, imo);
+            ResultSet rs = req.executeQuery();
+            if (rs.next()) {
+                Ship ship = new Ship();
+                ship.setIMO(rs.getInt("IMO"));
+                ship.setName(rs.getString("Name"));
+                ship.setBerth(rs.getInt("Berth"));
+                ship.setState(rs.getString("State"));
+                
+                return ship;
+            } else {
+                return null;
+            }
+        });
+    }
+	
 	public void addFormToList(PrearrivalForm form) {
 		this.arrivalForms.add(form);
-	}
-	
-	public String getLastShipName() {
-		
-		PrearrivalForm form = this.arrivalForms.get(this.arrivalForms.size() - 1);
-		String name = form.getName();
-		
-		return name;
 	}
 	
 	public List<Ship> getTestList() {

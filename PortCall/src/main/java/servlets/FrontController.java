@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import main.java.beans.PrearrivalForm;
+import main.java.beans.Ship;
 import main.java.dao.*;
 
 
@@ -73,15 +74,27 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 		
 		} else if(operation.equals("/PortCall/submitForm")) {
 			
-			request.setAttribute("ship", dao.getLastShipName());
+			//request.setAttribute("ship", dao.getLastShipName());
 			
-			request.setAttribute("request", operation);
+			//request.setAttribute("request", getOperation(operation));
 			request.getRequestDispatcher("sentForm.jsp").forward(request,  response);
 		
 		} else if(operation.equals("/PortCall/shipAgent")) {
 			
 			request.setAttribute("ships", dao.listShips());
 			request.getRequestDispatcher("shipAgent.jsp").forward(request,  response);
+		
+		} else if(operation.equals("/PortCall/shipAgentDetails")) {
+			
+			String IMOStr = request.getParameter("IMO");
+			
+			if (IMOStr!=null && !IMOStr.isEmpty()) {
+				int IMO = new Integer(IMOStr).intValue();
+				Ship ship = dao.findShip(IMO);
+				request.setAttribute("ship", ship);
+			}
+			
+			request.getRequestDispatcher("shipAgentDetails.jsp").forward(request,  response);
 		
 		}
 	}
