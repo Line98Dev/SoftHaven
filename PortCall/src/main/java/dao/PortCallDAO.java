@@ -54,7 +54,7 @@ public class PortCallDAO {
 			public List<Ship> run (Connection con) throws Exception {
 				List<Ship> list = new ArrayList<Ship>();
 				Statement stt = con.createStatement();
-				final String req = "select * from Ship ORDER BY RAND() LIMIT 3;";
+				final String req = "select * from Ship;";
 				ResultSet rs = stt.executeQuery(req);
 				while (rs.next()) {
 					Ship ship = new Ship();
