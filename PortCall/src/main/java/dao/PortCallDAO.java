@@ -1,5 +1,4 @@
 package main.java.dao;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -184,4 +183,52 @@ public class PortCallDAO {
             return null;
         });
     }
+	
+	public PrearrivalForm findForm(int IMO) {
+		return withDB(con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "select * from `Vessel Pre-arrival Form` where IMO = ?");
+            req.setInt(1, IMO);
+            ResultSet rs = req.executeQuery();
+            if (rs.next()) {
+            	PrearrivalForm form = new PrearrivalForm();
+				form.setName(rs.getString("Ship Name"));
+				form.setCallSign(rs.getString("Call sign"));
+				form.setIMO(rs.getInt("IMO"));
+				form.setAgentInfo(rs.getString("Agent Info"));
+				form.setArrivingFrom(rs.getString("Arriving From"));
+				form.setETA(rs.getString("ETA"));
+				form.setBerth(rs.getInt("Berth Number"));
+				form.setNextPort(rs.getString("Next PortName"));
+				form.setETD(rs.getString("ETD"));
+				form.setDischargeCargoDesc(rs.getString("Offboarding Cargo Desc"));
+				form.setDischargeCargoAmount(rs.getInt("Offboarding Cargo Amount"));
+				form.setLoadCargoDesc(rs.getString("Onboarding Cargo Desc"));
+				form.setLoadCargoAmount(rs.getInt("Onboarding Cargo Amount"));
+				form.setArrivalPassengers(rs.getInt("Passengers on Arrival"));
+				form.setDeparturePassengers(rs.getInt("Passengers on Departure"));
+				form.setFormValidation(rs.getInt("Form Validation"));
+                
+                return form;
+            } else {
+                return null;
+            }
+        });
+	}
+
+	public void approveForm(int imo, boolean status) {
+		System.out.println("in Modify()");
+        withDB((RunJDBC<PrearrivalForm>) con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "update Ship set `Form Validation`=? where IMO=?");
+            req.setInt(1, status? 1 : 0);
+            req.setInt(2, imo);
+            int nbLines = req.executeUpdate();
+            System.out.println("in Modify()");
+            if (nbLines != 1) {
+                System.out.println("Exception during modify");
+            }
+            return null;
+        });
+	}
 }

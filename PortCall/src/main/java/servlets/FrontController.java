@@ -15,7 +15,7 @@ import main.java.dao.*;
 /**
  * Servlet implementation class FrontController
  */
-@WebServlet(urlPatterns= {"/submitForm", "/shipAgentDetails",  "/shipAgentUpdated", "/shipMaster", "/shipAgent", "/index.jsp", "/customsAgent"})
+@WebServlet(urlPatterns= {"/submitForm", "/shipAgentDetails",  "/shipAgentUpdated", "/shipMaster", "/shipAgent", "/index.jsp", "/customsAgent", "/customsDetails", "/customsFormUpdated"})
 public class FrontController extends HttpServlet { //Also, use the previous line to add the new web pages as needed
 	
 	private static final long serialVersionUID = 1L;
@@ -62,7 +62,7 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 				
 				PrearrivalForm form = new PrearrivalForm(name, callSign, imo, agentInfo, arrivingFrom, eta, berth, nextPort, etd, dischargeCargoDesc, dischargeCargoAmount, loadCargoDesc, loadCargoAmount, arrivalPassengers, departurePassengers, 0);
 				
-				dao.addFormToList(form);
+				dao.addPrearrivalForm(form);
 				
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -113,6 +113,27 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			//request.setAttribute("request", getOperation(operation));
 			request.getRequestDispatcher("customsQueue.jsp").forward(request,  response);
 		
+		} else if(operation.equals("/PortCall/customsDetails")) {
+		
+			String IMOStr = request.getParameter("imo");
+			
+			if (IMOStr!=null && !IMOStr.isEmpty()) {
+				int IMO = Integer.parseInt(IMOStr);
+				PrearrivalForm form = dao.findForm(IMO);
+				request.setAttribute("form", form);
+			}
+			
+			request.getRequestDispatcher("customsApproval.jsp").forward(request,  response);
+			
+		} else if(operation.equals("/PortCall/customsFormUpdated")) {
+
+			boolean status = Boolean.parseBoolean(request.getParameter("approve"));
+			int imo = Integer.parseInt(request.getParameter("imo"));
+			
+			dao.approveForm(imo, status);
+			
+			request.setAttribute("forms", dao.listPreArrivalForms());
+			request.getRequestDispatcher("customsQueue.jsp").forward(request,  response);
 		}
 	}
 	
