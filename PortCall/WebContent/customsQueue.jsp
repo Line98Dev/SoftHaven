@@ -15,8 +15,8 @@
             <c:forEach var="form" items="${forms}">
 		        <tr>
 		        	<td>Name: ${form.name}</td>
-		        	<td>Call Sign: ${form.name}</td>
-                    <td>IMO: <a href="${pageContext.request.contextPath}/customsDetails?imo=${ship.IMO}">${form.IMO}</a></td>
+		        	<td>Call Sign: ${form.callSign}</td>
+                    <td>IMO: <a href="${pageContext.request.contextPath}/customsDetails?imo=${form.IMO}">${form.IMO}</a></td>
                     <td>Validation: ${form.formValidation}</td>
 		        </tr>
             </c:forEach>
