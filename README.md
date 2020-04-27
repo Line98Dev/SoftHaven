@@ -15,6 +15,8 @@ See branches for the different sections of the application: EvansFunPortCallAdve
 * Submit Pre-Arrival Form
 
 ## Architecture
+Inline-style: 
+![alt text](https://github.com/htline/SoftHaven/blob/master/images/architecture.png "Architecture")
 
 ## DB Resources
 
