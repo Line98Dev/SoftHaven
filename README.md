@@ -1,6 +1,21 @@
 # SoftHaven
 See branches for the different sections of the application: EvansFunPortCallAdventure is Port Call module, and the EvansFunTrafficAdventure is the Traffic Controller module.
 
+# Group Members
+* Evan Witous
+* Hunter Line
+* Corbin Creedon
+* Matthew Nessel
+
+
+# Tech Stack
+* Java
+* HTML
+* JS
+* MySQL
+* Eclipse IDE
+* Glassfish
+
 ## Current Features:
 ### Traffic Controller
 * Displays Map of the Port of Copenhagen-Malmö
@@ -31,4 +46,4 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/DenmarkTrafficJDBCConnectionPool.png "Architecture")
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/ConnectionPoolProperties.png "Architecture")
 
-## Extra Steps to get set up
+## Steps to get set up
