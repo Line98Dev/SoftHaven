@@ -1,14 +1,14 @@
 # SoftHaven
 See branches for the different sections of the application: EvansFunPortCallAdventure is Port Call module, and the EvansFunTrafficAdventure is the Traffic Controller module.
 
-# Group Members
+## Group Members
 * Evan Witous
 * Hunter Line
 * Corbin Creedon
 * Matthew Nessel
 
 
-# Tech Stack
+## Tech Stack
 * Java
 * HTML
 * JS
