@@ -15,9 +15,13 @@ See branches for the different sections of the application: EvansFunPortCallAdve
 * Submit Pre-Arrival Form
 
 ## Architecture
-Inline-style: 
+The architecture is very similar to the diagram provided by Nicholas Renet for the inital view of the project. We changed very little from the base architecture. 
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/architecture.png "Architecture")
 
 ## DB Resources
+[This is the link to the Portcall DB](https://github.com/htline/SoftHaven/blob/master/PortcallDB.sql)
+[This is the link to the Vessels DB](https://github.com/htline/SoftHaven/blob/master/VESSEL-1.1.sql)
+[This is a link to some dummy data](https://github.com/htline/SoftHaven/blob/master/Dummy_Info.sql)
+
 
 ## Extra Steps
