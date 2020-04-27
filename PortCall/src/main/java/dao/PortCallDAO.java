@@ -126,7 +126,7 @@ public class PortCallDAO {
 			public List<PrearrivalForm> run (Connection con) throws Exception {
 				List<PrearrivalForm> list = new ArrayList<PrearrivalForm>();
 				Statement stt = con.createStatement();
-				final String req = "select * from `Vessel Pre-arrival Form`;";
+				final String req = "select * from `Vessel Pre-arrival Form` WHERE `Form Validation`=0;";
 				ResultSet rs = stt.executeQuery(req);
 				while (rs.next()) {
 					PrearrivalForm form = new PrearrivalForm();
