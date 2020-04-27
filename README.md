@@ -25,7 +25,10 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 
 [This is a link to some dummy data](https://github.com/htline/SoftHaven/blob/master/Dummy_Info.sql)
 
+#### Here are the glassfish resources
+
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/DenmarkTrafficJDBCResource.png "Architecture")
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/DenmarkTrafficJDBCConnectionPool.png "Architecture")
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/ConnectionPoolProperties.png "Architecture")
-## Extra Steps
+
+## Extra Steps to get set up
