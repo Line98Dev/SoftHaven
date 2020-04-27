@@ -49,10 +49,10 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 				int imo = Integer.parseInt(request.getParameter("imo"));
 				String agentInfo = request.getParameter("agent");
 				String arrivingFrom = request.getParameter("arrivingFrom");
-				String eta = request.getParameter("eta");
+				String eta = convertDate(request.getParameter("eta"));
 				int berth = Integer.parseInt(request.getParameter("berth"));
 				String nextPort = request.getParameter("nextPort");
-				String etd = request.getParameter("etd");
+				String etd = convertDate(request.getParameter("etd"));
 				String dischargeCargoDesc = request.getParameter("dischargeDescription");
 				int dischargeCargoAmount = Integer.parseInt(request.getParameter("dischargeAmount"));
 				String loadCargoDesc = request.getParameter("loadingDescription");
@@ -135,6 +135,10 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			request.setAttribute("forms", dao.listPreArrivalForms());
 			request.getRequestDispatcher("customsQueue.jsp").forward(request,  response);
 		}
+	}
+	
+	private String convertDate(String oldDate) {
+		return oldDate.split("/", 5)[2] + "-" + oldDate.split("/", 5)[0] + "-" + oldDate.split("/", 5)[1] + " 00:00:00";
 	}
 	
 }
