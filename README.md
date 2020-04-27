@@ -20,8 +20,12 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 
 ## DB Resources
 [This is the link to the Portcall DB](https://github.com/htline/SoftHaven/blob/master/PortcallDB.sql)
+
 [This is the link to the Vessels DB](https://github.com/htline/SoftHaven/blob/master/VESSEL-1.1.sql)
+
 [This is a link to some dummy data](https://github.com/htline/SoftHaven/blob/master/Dummy_Info.sql)
 
-
+![alt text](https://github.com/htline/SoftHaven/blob/master/images/DenmarkTrafficJDBCResource.png "Architecture")
+![alt text](https://github.com/htline/SoftHaven/blob/master/images/DenmarkTrafficJDBCConnectionPool.png "Architecture")
+![alt text](https://github.com/htline/SoftHaven/blob/master/images/ConnectionPoolProperties.png "Architecture")
 ## Extra Steps
