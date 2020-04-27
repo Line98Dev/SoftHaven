@@ -154,4 +154,34 @@ public class PortCallDAO {
 			}
 		});
 	}
+	
+	public void addPrearrivalForm(final PrearrivalForm form) {
+        withDB((RunJDBC<Ship>) con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "INSERT INTO `Vessel Pre-arrival Form` VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')");
+            req.setString(1, form.getName());
+            req.setString(2, form.getCallSign());
+            req.setInt(3, form.getIMO());
+            req.setString(4, form.getAgentInfo());
+            req.setString(5, form.getArrivingFrom());
+            req.setString(6, form.getETA());
+            req.setInt(7, form.getBerth());
+            req.setString(8, form.getNextPort());
+            req.setString(9, form.getETD());
+            req.setString(10, form.getDischargeCargoDesc());
+            req.setInt(11, form.getDischargeCargoAmount());
+            req.setString(12, form.getLoadCargoDesc());
+            req.setInt(13, form.getLoadCargoAmount());
+            req.setInt(14, form.getArrivalPassengers());
+            req.setInt(15, form.getDeparturePassengers());
+            req.setString(16, "");
+            req.setInt(17, form.getFormValidation());
+            int nbLines = req.executeUpdate();
+            System.out.println("in Modify()");
+            if (nbLines != 1) {
+                System.out.println("Exception during modify");
+            }
+            return null;
+        });
+    }
 }
