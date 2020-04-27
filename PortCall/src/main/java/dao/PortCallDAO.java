@@ -133,7 +133,7 @@ public class PortCallDAO {
 					form.setCallSign(rs.getString("Call sign"));
 					form.setIMO(rs.getInt("IMO"));
 					form.setAgentInfo(rs.getString("Agent Info"));
-					form.setArrivingFrom(rs.getString("Arriving From"));
+					form.setArrivingFrom(rs.getString("Arriving Form"));
 					form.setETA(rs.getString("ETA"));
 					form.setBerth(rs.getInt("Berth Number"));
 					form.setNextPort(rs.getString("Next PortName"));
@@ -196,7 +196,7 @@ public class PortCallDAO {
 				form.setCallSign(rs.getString("Call sign"));
 				form.setIMO(rs.getInt("IMO"));
 				form.setAgentInfo(rs.getString("Agent Info"));
-				form.setArrivingFrom(rs.getString("Arriving From"));
+				form.setArrivingFrom(rs.getString("Arriving Form"));
 				form.setETA(rs.getString("ETA"));
 				form.setBerth(rs.getInt("Berth Number"));
 				form.setNextPort(rs.getString("Next PortName"));
