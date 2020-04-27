@@ -12,5 +12,6 @@
         </div>
         <a href="${pageContext.request.contextPath}/shipAgent">Ship Agent</a>
         <a href="${pageContext.request.contextPath}/shipMaster">Ship Master</a>
+        <a href="${pageContext.request.contextPath}/customsAgent">Customs Agent</a>
 	</body>
 </html>

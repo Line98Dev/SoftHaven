@@ -120,4 +120,38 @@ public class PortCallDAO {
 		
 		return shipList;
 	}
+
+	public List<PrearrivalForm> listPreArrivalForms() {
+		return withDB( new RunJDBC<List<PrearrivalForm>>() {
+			public List<PrearrivalForm> run (Connection con) throws Exception {
+				List<PrearrivalForm> list = new ArrayList<PrearrivalForm>();
+				Statement stt = con.createStatement();
+				final String req = "select * from `Vessel Pre-arrival Form`;";
+				ResultSet rs = stt.executeQuery(req);
+				while (rs.next()) {
+					PrearrivalForm form = new PrearrivalForm();
+					form.setName(rs.getString("Ship Name"));
+					form.setCallSign(rs.getString("Call sign"));
+					form.setIMO(rs.getInt("IMO"));
+					form.setAgentInfo(rs.getString("Agent Info"));
+					form.setArrivingFrom(rs.getString("Arriving From"));
+					form.setETA(rs.getString("ETA"));
+					form.setBerth(rs.getInt("Berth Number"));
+					form.setNextPort(rs.getString("Next PortName"));
+					form.setETD(rs.getString("ETD"));
+					form.setDischargeCargoDesc(rs.getString("Offboarding Cargo Desc"));
+					form.setDischargeCargoAmount(rs.getInt("Offboarding Cargo Amount"));
+					form.setLoadCargoDesc(rs.getString("Onboarding Cargo Desc"));
+					form.setLoadCargoAmount(rs.getInt("Onboarding Cargo Amount"));
+					form.setArrivalPassengers(rs.getInt("Passengers on Arrival"));
+					form.setDeparturePassengers(rs.getInt("Passengers on Departure"));
+					form.setFormValidation(rs.getInt("Form Validation"));
+					
+					list.add(form);
+				}
+				
+				return list;
+			}
+		});
+	}
 }

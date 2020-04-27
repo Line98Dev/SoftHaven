@@ -90,7 +90,7 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			String IMOStr = request.getParameter("imo");
 			
 			if (IMOStr!=null && !IMOStr.isEmpty()) {
-				int IMO = new Integer(IMOStr).intValue();
+				int IMO = Integer.parseInt(IMOStr);
 				Ship ship = dao.findShip(IMO);
 				request.setAttribute("ship", ship);
 			}
@@ -106,6 +106,12 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			
 			request.setAttribute("ships", dao.listShips());
 			request.getRequestDispatcher("shipAgent.jsp").forward(request,  response);
+		
+		} else if(operation.equals("/PortCall/customsAgent")) {
+			
+			request.setAttribute("forms", dao.listPreArrivalForms());
+			//request.setAttribute("request", getOperation(operation));
+			request.getRequestDispatcher("customsQueue.jsp").forward(request,  response);
 		
 		}
 	}
