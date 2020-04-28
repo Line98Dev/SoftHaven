@@ -133,7 +133,7 @@ public class PortCallDAO {
 					form.setCallSign(rs.getString("Call sign"));
 					form.setIMO(rs.getInt("IMO"));
 					form.setAgentInfo(rs.getString("Agent Info"));
-					form.setArrivingFrom(rs.getString("Arriving From"));
+					form.setArrivingFrom(rs.getString("Arriving Form"));
 					form.setETA(rs.getString("ETA"));
 					form.setBerth(rs.getInt("Berth Number"));
 					form.setNextPort(rs.getString("Next PortName"));
@@ -165,6 +165,24 @@ public class PortCallDAO {
             }
             return null;
         });
+        
+        Ship ship = new Ship(form.getName(), form.getIMO(), form.getBerth(), "expected");
+        
+        addShip(ship);
+    }
+	
+	public void addShip(final Ship ship) {
+        withDB((RunJDBC<Ship>) con -> {
+            PreparedStatement req = con.prepareStatement(
+                    "INSERT INTO Ship VALUES ( '" + ship.getIMO() + "', '" + ship.getName() + "', '" + ship.getBerth() + "', '" + ship.getState() + "')");
+            int nbLines = req.executeUpdate();
+            System.out.println("in Modify()");
+            if (nbLines != 1) {
+                System.out.println("Exception during modify");
+            }
+            return null;
+        });
+        
     }
 	
 	public PrearrivalForm findForm(int IMO) {
@@ -179,7 +197,7 @@ public class PortCallDAO {
 				form.setCallSign(rs.getString("Call sign"));
 				form.setIMO(rs.getInt("IMO"));
 				form.setAgentInfo(rs.getString("Agent Info"));
-				form.setArrivingFrom(rs.getString("Arriving From"));
+				form.setArrivingFrom(rs.getString("Arriving Form"));
 				form.setETA(rs.getString("ETA"));
 				form.setBerth(rs.getInt("Berth Number"));
 				form.setNextPort(rs.getString("Next PortName"));
