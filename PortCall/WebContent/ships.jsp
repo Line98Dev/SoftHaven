@@ -20,7 +20,7 @@
 		</div>
 		<div>
 			<label for="imo">IMO Number:</label>
-            <input type="number" name="imo" id="imo" required />
+            <input type="number" name="imoNumber" id="imoNumber" required />
 		</div>
 		<div>
 			<label for="agent">Agent Info:</label>

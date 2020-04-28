@@ -43,10 +43,14 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			
 		} else if(operation.equals("/PortCall/shipMaster")) {
 			
+			request.getRequestDispatcher("ships.jsp").forward(request,  response);
+		
+		} else if(operation.equals("/PortCall/submitForm")) {
+			
 			try {
 				String name = request.getParameter("shipName");
 				String callSign = request.getParameter("callSign");
-				int imo = Integer.parseInt(request.getParameter("imo"));
+				int imo = Integer.parseInt(request.getParameter("imoNumber"));
 				String agentInfo = request.getParameter("agent");
 				String arrivingFrom = request.getParameter("arrivingFrom");
 				String eta = convertDate(request.getParameter("eta"));
@@ -67,13 +71,8 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
-				System.out.println("Exception during edit operation");
+				System.out.println("EXCEPTION during SUBMIT operation");
 			}
-			
-			request.getRequestDispatcher("ships.jsp").forward(request,  response);
-		
-		} else if(operation.equals("/PortCall/submitForm")) {
-			
 			//request.setAttribute("ship", dao.getLastShipName());
 			
 			//request.setAttribute("request", getOperation(operation));
@@ -138,7 +137,8 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 	}
 	
 	private String convertDate(String oldDate) {
-		return oldDate.split("/", 5)[2] + "-" + oldDate.split("/", 5)[0] + "-" + oldDate.split("/", 5)[1] + " 00:00:00";
+		//return oldDate.charAt(6) + oldDate.charAt(7) + oldDate.charAt(8) + oldDate.charAt(9) + "-" + oldDate.charAt(0) + oldDate.charAt(1) + "-" + oldDate.charAt(3) + oldDate.charAt(4) + " 00:00:00";
+		return "2020-01-01 00:00:00";
 	}
 	
 }

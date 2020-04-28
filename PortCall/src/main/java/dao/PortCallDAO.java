@@ -155,26 +155,9 @@ public class PortCallDAO {
 	}
 	
 	public void addPrearrivalForm(final PrearrivalForm form) {
-        withDB((RunJDBC<Ship>) con -> {
+        withDB((RunJDBC<PrearrivalForm>) con -> {
             PreparedStatement req = con.prepareStatement(
-                    "INSERT INTO `Vessel Pre-arrival Form` VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')");
-            req.setString(1, form.getName());
-            req.setString(2, form.getCallSign());
-            req.setInt(3, form.getIMO());
-            req.setString(4, form.getAgentInfo());
-            req.setString(5, form.getArrivingFrom());
-            req.setString(6, form.getETA());
-            req.setInt(7, form.getBerth());
-            req.setString(8, form.getNextPort());
-            req.setString(9, form.getETD());
-            req.setString(10, form.getDischargeCargoDesc());
-            req.setInt(11, form.getDischargeCargoAmount());
-            req.setString(12, form.getLoadCargoDesc());
-            req.setInt(13, form.getLoadCargoAmount());
-            req.setInt(14, form.getArrivalPassengers());
-            req.setInt(15, form.getDeparturePassengers());
-            req.setString(16, "");
-            req.setInt(17, form.getFormValidation());
+                    "INSERT INTO `Vessel Pre-arrival Form` VALUES ( '" + form.getName() + "', '" + form.getCallSign() + "', '" + form.getIMO() + "', '" + form.getAgentInfo() + "', '" + form.getArrivingFrom() + "', '" + form.getETA() + "', '" + form.getBerth() + "', '" + form.getNextPort() + "', '" + form.getETD() + "', '" + form.getDischargeCargoDesc() + "', '" + form.getDischargeCargoAmount() + "', '" + form.getLoadCargoDesc() + "', '" + form.getLoadCargoAmount() + "', '" + form.getArrivalPassengers() + "', '" + form.getDeparturePassengers() + "', '' , '" + form.getFormValidation() + "')");
             int nbLines = req.executeUpdate();
             System.out.println("in Modify()");
             if (nbLines != 1) {
