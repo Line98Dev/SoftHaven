@@ -24,8 +24,11 @@ See branches for the different sections of the application: EvansFunPortCallAdve
 * View information on a specific ship
 * List all ships
 * Edit status of ships
+* Select Available Berths for Ships 
 ### Customs Officer
 * View unapproved Pre-Arrival Forms
+* List all vessels
+* Approve and unapprove Pre-Arrival Forms
 ### Ship Master
 * Submit Pre-Arrival Form
 
@@ -53,3 +56,7 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/JavaBuildPath.png "Java Build Path")
 
 ## Steps to get set up
+
+Installed Prerequisites: MySQL, JDK 1.8.240 EE, Eclipse, Glassfish
+
+
