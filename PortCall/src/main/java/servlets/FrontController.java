@@ -92,6 +92,9 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 				int IMO = Integer.parseInt(IMOStr);
 				Ship ship = dao.findShip(IMO);
 				request.setAttribute("ship", ship);
+				
+				PrearrivalForm form = dao.findForm(IMO);
+				request.setAttribute("form", form);
 			}
 			
 			request.getRequestDispatcher("shipAgentDetails.jsp").forward(request,  response);
