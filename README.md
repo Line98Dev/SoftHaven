@@ -24,7 +24,6 @@ See branches for the different sections of the application: EvansFunPortCallAdve
 * View information on a specific ship
 * List all ships
 * Edit status of ships
-* Select Available Berths for Ships 
 ### Customs Officer
 * View unapproved Pre-Arrival Forms
 * List all vessels
@@ -37,7 +36,7 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 ![alt text](https://github.com/htline/SoftHaven/blob/master/images/architecture.png "Architecture")
 
 ## DB Resources
-[This is the link to the Portcall DB](https://github.com/htline/SoftHaven/blob/master/PortcallDB.sql)
+[This is the link to the Portcall DB](https://github.com/htline/SoftHaven/blob/master/Dummy_Info_Fix.sql)
 
 [This is the link to the Vessels DB](https://github.com/htline/SoftHaven/blob/master/VESSEL-1.1.sql)
 
