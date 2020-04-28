@@ -31,10 +31,8 @@
 	                    <td>Validation: ${form.formValidation}</td>
 		        	</tr>
         		</table>
-        		<form class="form" method="post" href="${pageContext.request.contextPath}/shipAgentUpdated?imo=${form.IMO}">
         			<h3>Approval Status:</h3>
-        				<a href="${pageContext.request.contextPath}/customsFormUpdated?imo=${form.IMO}&approve=false">Deny</a> or <a href="${pageContext.request.contextPath}/customsFormUpdated?imo=${form.IMO}&approve=true">Approve</a>
-        		</form>
+        			<a href="${pageContext.request.contextPath}/customsFormUpdated?imo=${form.IMO}&approve=false">Deny</a> or <a href="${pageContext.request.contextPath}/customsFormUpdated?imo=${form.IMO}&approve=true">Approve</a>
 			</c:when>
 			<c:otherwise>
 				Pre-Approval Form not found

@@ -133,7 +133,7 @@ public class PortCallDAO {
 					form.setCallSign(rs.getString("Call sign"));
 					form.setIMO(rs.getInt("IMO"));
 					form.setAgentInfo(rs.getString("Agent Info"));
-					form.setArrivingFrom(rs.getString("Arriving Form"));
+					form.setArrivingFrom(rs.getString("Arriving From"));
 					form.setETA(rs.getString("ETA"));
 					form.setBerth(rs.getInt("Berth Number"));
 					form.setNextPort(rs.getString("Next PortName"));
@@ -179,7 +179,7 @@ public class PortCallDAO {
 				form.setCallSign(rs.getString("Call sign"));
 				form.setIMO(rs.getInt("IMO"));
 				form.setAgentInfo(rs.getString("Agent Info"));
-				form.setArrivingFrom(rs.getString("Arriving Form"));
+				form.setArrivingFrom(rs.getString("Arriving From"));
 				form.setETA(rs.getString("ETA"));
 				form.setBerth(rs.getInt("Berth Number"));
 				form.setNextPort(rs.getString("Next PortName"));
@@ -202,9 +202,11 @@ public class PortCallDAO {
 	public void approveForm(int imo, boolean status) {
 		System.out.println("in Modify()");
         withDB((RunJDBC<PrearrivalForm>) con -> {
+        	int intStatus = status? 1 : 0;
+        	System.out.println("intStatus: " + intStatus);
             PreparedStatement req = con.prepareStatement(
-                    "update Ship set `Form Validation`=? where IMO=?");
-            req.setInt(1, status? 1 : 0);
+                    "UPDATE `vessel pre-arrival form` SET `Form Validation` = ? WHERE (`IMO` = ?);");
+            req.setInt(1, intStatus);
             req.setInt(2, imo);
             int nbLines = req.executeUpdate();
             System.out.println("in Modify()");

@@ -128,7 +128,7 @@ public class FrontController extends HttpServlet { //Also, use the previous line
 
 			boolean status = Boolean.parseBoolean(request.getParameter("approve"));
 			int imo = Integer.parseInt(request.getParameter("imo"));
-			
+			System.out.println("Status selected: " + status);
 			dao.approveForm(imo, status);
 			
 			request.setAttribute("forms", dao.listPreArrivalForms());

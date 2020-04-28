@@ -72,7 +72,7 @@
 		</div>
 		<div>
 			<label for="file">Crew Documents:</label>
-            <input type="file" name="file" id="file" required />
+            <input type="file" name="file" id="file" />
 		</div>
 		<div>
 			<a href="${pageContext.request.contextPath}/">Back</a> or <button type="submit" name="submit">Submit</button>
