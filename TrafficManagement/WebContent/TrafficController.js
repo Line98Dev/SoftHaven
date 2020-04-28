@@ -74,6 +74,8 @@ function updateView(json) {
 	AddingShipToView(json);
 }
 
+updateView(getJsonCollection());
+
 
 
 
