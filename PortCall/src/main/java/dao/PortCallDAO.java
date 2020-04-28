@@ -12,6 +12,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.sql.DataSource;
 import main.java.beans.PrearrivalForm;
 import main.java.beans.Ship;
+import main.java.beans.Vessel;
 
 
 @ApplicationScoped @JDBC
@@ -233,5 +234,33 @@ public class PortCallDAO {
             }
             return null;
         });
+	}
+
+	public List<Vessel> listVessels() {
+		return withDB( new RunJDBC<List<Vessel>>() {
+			public List<Vessel> run (Connection con) throws Exception {
+				List<Vessel> list = new ArrayList<Vessel>();
+				Statement stt = con.createStatement();
+				final String req = "select * from `Vessel`;";
+				ResultSet rs = stt.executeQuery(req);
+				while (rs.next()) {
+					int imo = rs.getInt("IMO");
+					String flag = rs.getString("Flag");
+					String name = rs.getString("Name");
+					int built = rs.getInt("Built");
+					String callSign = rs.getString("CallSign");
+					int length = rs.getInt("Length");
+					int breadth = rs.getInt("Breadth");
+					int tonnage = rs.getInt("Tonnage");
+					int mmsi = rs.getInt("MMSI");
+					String type = rs.getString("Type");
+					int ownerCode = rs.getInt("Owner_Code");
+					Vessel vessel = new Vessel(imo, flag, name, built, callSign, length, breadth, tonnage, mmsi, type, ownerCode);
+					list.add(vessel);
+				}
+				
+				return list;
+			}
+		});
 	}
 }
