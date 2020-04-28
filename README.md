@@ -58,4 +58,4 @@ The architecture is very similar to the diagram provided by Nicholas Renet for t
 
 Installed Prerequisites: MySQL, JDK 1.8.240 EE, Eclipse, Glassfish
 
-
+Import project (https://github.com/htline/SoftHaven.git) from git using smart import
