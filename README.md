@@ -24,6 +24,7 @@ See branches for the different sections of the application: EvansFunPortCallAdve
 * View information on a specific ship
 * List all ships
 * Edit status of ships
+* Viewing Pre-arrival Form
 ### Customs Officer
 * View unapproved Pre-Arrival Forms
 * List all vessels
